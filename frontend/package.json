@@ -1,6 +1,5 @@
 {
   "name": "reaktor-assignment",
-  "homepage": "http://jimmytran411.github.io/reaktor-assignment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

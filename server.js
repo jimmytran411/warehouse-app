@@ -18,10 +18,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "frontend/build")));
 
+const root = path.join(__dirname, "frontend", "build");
+app.use(express.static(root));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/frontend/build/index.html"));
+  res.sendFile("index.html", { root });
 });
-
 app.use("/", products);
 
 const PORT = process.env.PORT || 8080;
