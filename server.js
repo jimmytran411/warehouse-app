@@ -12,15 +12,16 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.static(path.join(__dirname, "frontend/build")));
 
-// const root = path.join(__dirname, "frontend", "build");
-// app.use(express.static(root));
-// app.get("*", (req, res) => {
-//   res.sendFile("index.html", { root });
-// });
 app.use("/", products);
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "frontend/build")));
+const root = path.join(__dirname, "frontend", "build");
+app.use(express.static(root));
+app.get("*", (req, res) => {
+  res.sendFile("index.html", { root });
+});
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

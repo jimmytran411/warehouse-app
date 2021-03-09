@@ -11,7 +11,7 @@ import { Category } from "./Category";
 
 function App() {
   return (
-    <Router basename="/reaktor-assignment">
+    <Router>
       <div className="App">
         <header className="App-header">
           <ul className="nav-ul">
