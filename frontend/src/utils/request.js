@@ -4,7 +4,6 @@ import { config } from "./config";
 export const getAvailabilities = async (manufacturer, token) => {
   return axios
     .get(`${config.baseApi}/v2/availability/${manufacturer}`, {
-      origin: "https://localhost:3000",
       cancelToken: token,
     })
     .then((response) => {
@@ -23,7 +22,6 @@ export const getAvailabilities = async (manufacturer, token) => {
 export const getProducts = async (product, token) => {
   return axios
     .get(`${config.baseApi}/v2/products/${product}`, {
-      origin: "https://localhost:3000",
       cancelToken: token,
     })
     .then((response) => response.data)
