@@ -2,10 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const products = require("./routes/products");
-const http = require("http");
 const path = require("path");
-
-const server = http.createServer(app);
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -16,17 +13,17 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "frontend/build")));
+// app.use(express.static(path.join(__dirname, "frontend/build")));
 
-const root = path.join(__dirname, "frontend", "build");
-app.use(express.static(root));
-app.get("*", (req, res) => {
-  res.sendFile("index.html", { root });
-});
+// const root = path.join(__dirname, "frontend", "build");
+// app.use(express.static(root));
+// app.get("*", (req, res) => {
+//   res.sendFile("index.html", { root });
+// });
 app.use("/", products);
 
 const PORT = process.env.PORT || 8080;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
 

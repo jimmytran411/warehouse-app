@@ -47,8 +47,7 @@ const getAvailability = async (manufacturer) => {
     .get(`${availabilityUrl}/${manufacturer}`)
     .then((response) => {
       const availability = response.data;
-      if (availability === "[]") {
-        console.log(availability);
+      if (availability.response === "[]") {
         return getAvailability(manufacturer);
       } else {
         return availability;
